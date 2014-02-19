@@ -1,7 +1,6 @@
 <!DOCTYPE html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
@@ -32,7 +31,11 @@
           <p>The dark red node is the current ingredient node that the graph is centered around. That ingredient appears in all the recipes in the current graph.</p>
         </div>
       </div>
-      <div id="svg-container"></div>
+      <div id="svg-container">
+        <svg id="main-svg" width="2px" height="2px" viewBox="0 0 2 2">
+          <g id="svg-container"></g>
+        </svg>
+      </div>
       <!-- Site footer -->
       <div class="footer">
         <p>&copy; Delimited 2013</p>
