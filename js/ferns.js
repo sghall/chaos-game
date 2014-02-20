@@ -1,7 +1,6 @@
 (function (){
   var APP = {};
   var width = 2, height = 2;
-  var pointsArray = [];
   var basePoint = {x: 0, y: 0};
   var svg = d3.select("#main-svg")
   var colors = ['#006600','#663333','#CC0033','#330099'];
@@ -21,20 +20,24 @@
     return min + Math.floor(Math.random() * (max - min + 1));
   }
 
-  function renderPoint(data) {
+  function renderPoint(data, flag) {
     svg.append("circle")
       .attr("class", "fractalPoint")
-      .style("fill", colors[data.c])
-      .style("opactiy", .5)
+      .style("fill", flag ? colors[0]: colors[data.c])
+      .style("opacity", .8)
       .attr("cx", data.x)
       .attr("cy", data.y)
-      .attr("r", .002)
+      .attr("r", .0025)
   }
 
-  APP.addPoint = function () {
+  APP.addPoint = function (colors) {
     var xy = getCoords(basePoint.x, basePoint.y);
     basePoint = xy;
-    renderPoint({c: xy.c, x: xy.x + width / 5, y: xy.y + height / 10});
+    if (colors) {
+      renderPoint({c: xy.c, x: xy.x + width / 5, y: xy.y + height / 10}, 1);
+    } else {
+      renderPoint({c: xy.c, x: xy.x + width / 5, y: xy.y + height / 10}, 0);
+    }
   }
 
   APP.onResize = function () {
