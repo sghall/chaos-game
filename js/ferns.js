@@ -24,7 +24,7 @@
     svg.append("circle")
       .attr("class", "fractalPoint")
       .style("fill", flag ? colors[0]: colors[data.c])
-      .style("opacity", .8)
+      .style("opacity", .6)
       .attr("cx", data.x)
       .attr("cy", data.y)
       .attr("r", .002)
