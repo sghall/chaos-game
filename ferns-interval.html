@@ -17,6 +17,7 @@
 
       <div id="svg-container">
         <h2 id="progress"></h2>
+        <button id="stopBtn">Stop</button>
         <svg id="main-svg" width="2px" height="2px" viewBox="0 0 2 2">
           <g id="svg-container"></g>
         </svg>
@@ -36,9 +37,18 @@
         APP.onResize();
       });
 
-      for (var i = 0; i < 25000; i++) {
-        APP.addPoint(1);
-      }
+      APP.interval = setInterval(function () {
+        APP.addPoint();
+        APP.count++;
+        $("#progress").text(d3.format(".2%")(APP.count/APP.times) + " " + d3.format(",")(APP.count) + "/" + d3.format(",")(APP.times));
+        if (APP.count >= APP.times) {
+          clearInterval(APP.interval);
+        }
+      }, 0);
+
+      $("#stopBtn").on("click", function () {
+        clearInterval(APP.interval)
+      });
     </script>
   </body>
 </html>

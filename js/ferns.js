@@ -27,7 +27,7 @@
       .style("opacity", .8)
       .attr("cx", data.x)
       .attr("cy", data.y)
-      .attr("r", .0025)
+      .attr("r", .002)
   }
 
   APP.addPoint = function (colors) {
