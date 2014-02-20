@@ -7,7 +7,8 @@ $(window).on("resize", function() {
 APP.interval = setInterval(function () {
   APP.addPoint();
   APP.count++;
-  if (APP.count > 20000) {
+  $("#progress").text(d3.format(".2%")(APP.count/APP.times) + " " + d3.format(",")(APP.count) + "/" + d3.format(",")(APP.times));
+  if (APP.count >= APP.times) {
     clearInterval(APP.interval);
   }
 }, 0);

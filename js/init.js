@@ -6,6 +6,7 @@
   var svg = d3.select("#main-svg")
   var colors = ['#006600','#663333','#CC0033','#330099'];
 
+  APP.times = 10000;
   APP.count = 0;
 
   function getCoords (x, y) {
@@ -26,17 +27,17 @@
       .attr("r", .002)
   }
 
+  APP.addPoint = function () {
+    var xy = getCoords(basePoint.x, basePoint.y);
+    basePoint = xy;
+    renderPoint({c: xy.c, x: xy.x + width / 5, y: xy.y + height / 10});
+  }
+
   APP.onResize = function () {
     var aspect = 2 / 2, chart = $("#main-svg");
     var targetWidth = chart.parent().width();
     chart.attr("width", targetWidth);
     chart.attr("height", targetWidth / aspect);
-  }
-
-  APP.addPoint = function () {
-    var xy = getCoords(basePoint.x, basePoint.y);
-    basePoint = xy;
-    renderPoint({c: xy.c, x: xy.x + width / 10, y: xy.y + height / 10});
   }
 
   window.APP = APP;
