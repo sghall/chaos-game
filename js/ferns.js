@@ -2,8 +2,14 @@
   var VIZ = {};
   var width = 2, height = 2;
   var basePoint = {x: 0, y: 0};
-  var svg = d3.select("#main-svg")
   var colors = ['#006600','#663333','#CC0033','#330099'];
+  var svg = d3.select("#svg-container")
+    .append("svg")
+    .attr("id", "thesvg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", "0 0 " + width + " " + height)
+    .append("g");
 
   VIZ.times = 10000;
   VIZ.count = 0;
@@ -41,7 +47,7 @@
   }
 
   VIZ.onResize = function () {
-    var aspect = 2 / 2, chart = $("#main-svg");
+    var aspect = height / width, chart = $("#thesvg");
     var targetWidth = chart.parent().width();
     chart.attr("width", targetWidth);
     chart.attr("height", targetWidth / aspect);
