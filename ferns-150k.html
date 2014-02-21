@@ -25,14 +25,14 @@
     <script src="lib/jquery.js"></script>
     <script src="js/ferns.js"></script>
     <script>
-      APP.onResize();
+      VIZ.onResize();
 
       $(window).on("resize", function() {
-        APP.onResize();
+        VIZ.onResize();
       });
 
       for (var i = 0; i < 150000; i++) {
-        APP.addPoint(1);
+        VIZ.addPoint(1);
       }
     </script>
   </body>

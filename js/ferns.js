@@ -1,12 +1,12 @@
 (function (){
-  var APP = {};
+  var VIZ = {};
   var width = 2, height = 2;
   var basePoint = {x: 0, y: 0};
   var svg = d3.select("#main-svg")
   var colors = ['#006600','#663333','#CC0033','#330099'];
 
-  APP.times = 10000;
-  APP.count = 0;
+  VIZ.times = 10000;
+  VIZ.count = 0;
 
   function getCoords(x, y) {
     var p = random(1,1000);
@@ -30,7 +30,7 @@
       .attr("r", .002)
   }
 
-  APP.addPoint = function (colors) {
+  VIZ.addPoint = function (colors) {
     var xy = getCoords(basePoint.x, basePoint.y);
     basePoint = xy;
     if (colors) {
@@ -40,13 +40,13 @@
     }
   }
 
-  APP.onResize = function () {
+  VIZ.onResize = function () {
     var aspect = 2 / 2, chart = $("#main-svg");
     var targetWidth = chart.parent().width();
     chart.attr("width", targetWidth);
     chart.attr("height", targetWidth / aspect);
   }
 
-  window.APP = APP;
+  window.VIZ = VIZ;
 
 }())

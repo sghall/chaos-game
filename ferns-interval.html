@@ -26,23 +26,23 @@
     <script src="lib/jquery.js"></script>
     <script src="js/ferns.js"></script>
     <script>
-      APP.onResize();
+      VIZ.onResize();
 
       $(window).on("resize", function() {
-        APP.onResize();
+        VIZ.onResize();
       });
 
-      APP.interval = setInterval(function () {
-        APP.addPoint();
-        APP.count++;
-        $("#progress").text(d3.format(".2%")(APP.count/APP.times) + " " + d3.format(",")(APP.count) + "/" + d3.format(",")(APP.times));
-        if (APP.count >= APP.times) {
-          clearInterval(APP.interval);
+      VIZ.interval = setInterval(function () {
+        VIZ.addPoint();
+        VIZ.count++;
+        $("#progress").text(d3.format(".2%")(VIZ.count/VIZ.times) + " " + d3.format(",")(VIZ.count) + "/" + d3.format(",")(VIZ.times));
+        if (VIZ.count >= VIZ.times) {
+          clearInterval(VIZ.interval);
         }
       }, 0);
 
       $("#stopBtn").on("click", function () {
-        clearInterval(APP.interval)
+        clearInterval(VIZ.interval)
       });
     </script>
   </body>
